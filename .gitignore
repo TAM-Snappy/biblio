@@ -1,0 +1,5 @@
+manga/*
+!manga/asupprimer.txt
+temp/*
+!temp/asupprimer.txt
+
