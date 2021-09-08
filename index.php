@@ -24,10 +24,10 @@ if($dossier = opendir('manga/'))//On ouvre le dossier souhaité avec la fonction
        
     closedir($dossier);
 
-sort($tab);
-foreach($tab as $euma){
-echo '<li><a href="tome.php?manga=' . $euma .'">' . $euma . '</a></li>'; 
-}
+    sort($tab);
+    foreach($tab as $euma){
+    echo '<li><a href="tome.php?manga=' . $euma .'">' . $euma . '</a></li>'; 
+    }
 }
    
 else
