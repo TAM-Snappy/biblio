@@ -1,5 +1,5 @@
-manga/*
-!manga/asupprimer.txt
-temp/*
-!temp/asupprimer.txt
+static/manga/*
+!static/manga/asupprimer.txt
+static/temp/*
+!static/temp/asupprimer.txt
 
