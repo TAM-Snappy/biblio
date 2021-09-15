@@ -11,3 +11,5 @@ function displayHome($nb_fichier, $tab_nom_manga){
     require_once('views/gabarit.php');
 }
 
+
+
