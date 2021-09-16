@@ -22,7 +22,10 @@ class Manga extends Controller
                 }
                 
             }
+            closedir($dossier);
         }
+
+        sort($tab_nom_manga);
 
         $this->view('listeManga', ['nb_manga' => $nb_manga, 'tab_nom_manga' => $tab_nom_manga]); 
     }
@@ -45,6 +48,8 @@ class Manga extends Controller
 
             } //On termine la boucle
             closedir($dossier);
+
+            sort($tab_nom_tome);
 
             $this->view('listeTome', ['nom_manga' => $nom_manga, 'nb_tome' => $nb_tome, 'tab_nom_tome' => $tab_nom_tome]);
         }
@@ -96,6 +101,60 @@ class Manga extends Controller
         }
         else{
             echo "Erreur dans l'ouverture du dossier des images !";
+            $this->index();
+        }
+    }
+
+    public function tomesuivant($nom_manga = '', $nom_tome = ''){  
+        
+        $tab_nom_tome = array();
+        if($dossier = opendir($this->chemin_manga . $nom_manga)){
+
+            while(false !== ($fichier = readdir($dossier))){
+                if($fichier != '.' && $fichier != '..' && $fichier != 'index.php'){
+                        $tab_nom_tome[]=$fichier;
+                }
+            }
+            closedir($dossier);
+
+            sort($tab_nom_tome);
+        }
+        else{
+            echo "Erreur dans l'ouverture du dossier !";
+            $this->index();
+        }
+
+
+        $isSuivant = false;
+        $nom_tome_suivant = '';
+
+        foreach ($tab_nom_tome as $fichier) {
+            if($isSuivant){
+                $nom_tome_suivant = $fichier;
+                break;
+            }
+
+            if($fichier == $nom_tome){
+                $isSuivant = true;
+            }
+        }
+
+        // supprime ancien tome dans le temp
+        $dir = $this->chemin_temp . $nom_manga . '/' . explode('.',$nom_tome)[0];
+        if(is_dir($dir)){
+            foreach(scandir($dir) as $file) {
+                if ('.' === $file || '..' === $file) continue;
+                else unlink("$dir/$file");
+            }
+            rmdir($dir);
+        }
+
+        if($isSuivant && $nom_tome_suivant != ''){
+            // redirige vers le tome suivant
+            $this->tome($nom_manga, $nom_tome_suivant);
+        }
+        else{
+            echo "Fin des tomes de ce manga";
             $this->index();
         }
     }

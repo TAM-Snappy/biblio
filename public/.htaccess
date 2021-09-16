@@ -1,7 +1,7 @@
 Options -MultiViews
 RewriteEngine On 
 
-RewriteBase /biblio_manga/biblio/public/
+RewriteBase "/biblio_manga/biblio/public/"  
 
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f 

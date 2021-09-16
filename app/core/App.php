@@ -34,7 +34,7 @@ class App
     public function parseUrl()
     {
         if(isset($_GET['url'])) {
-            if(preg_match("#^.*[\\\,;:!?\*].*$#",$_GET['url'])){
+            if(preg_match("#^.*[\\\,;:!?|\*].*$#",$_GET['url'])){
                 echo "Erreur dans le nommage d'un paramètre !";
                 return ['',''];
             }
