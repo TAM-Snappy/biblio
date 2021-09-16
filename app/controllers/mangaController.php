@@ -6,6 +6,17 @@ class Manga extends Controller
     private $chemin_manga = '../static/manga/';
     private $chemin_temp = '../static/temp/';
 
+    public function getSessionId(){
+        if(isset($id_session)){
+            // ID de session (récupéré via session_id())
+            return $id_session.'/';
+        }
+        if(isset($_COOKIE['PHPSESSID'])){
+            // ID de session (récupéré via $_COOKIE)
+            return $_COOKIE['PHPSESSID'].'/';
+        }
+    }
+
     public function index(){
 
         $nb_manga = 0;
@@ -66,7 +77,7 @@ class Manga extends Controller
         $chemin_cible = $this->chemin_manga . $nom_manga . '/' . $nom_tome ;
 
         $nom_tome_sans_extention = explode('.',$nom_tome)[0]; // supp l'extension
-        $chemin_cible_temp = $this->chemin_temp . $nom_manga . '/' . $nom_tome_sans_extention; 
+        $chemin_cible_temp = $this->chemin_temp . $this->getSessionId() . $nom_manga . '/' . $nom_tome_sans_extention; 
 
         $zip = new ZipArchive;
         $resultat = $zip->open("$chemin_cible");
@@ -140,7 +151,7 @@ class Manga extends Controller
         }
 
         // supprime ancien tome dans le temp
-        $dir = $this->chemin_temp . $nom_manga . '/' . explode('.',$nom_tome)[0];
+        $dir = $this->chemin_temp . $this->getSessionId() . $nom_manga . '/' . explode('.',$nom_tome)[0];
         if(is_dir($dir)){
             foreach(scandir($dir) as $file) {
                 if ('.' === $file || '..' === $file) continue;
