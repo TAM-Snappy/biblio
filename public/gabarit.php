@@ -19,7 +19,7 @@
 
         <?php 
 
-            echo '<a href="/biblio_manga/biblio/public/">Home</a>&nbsp;';
+            echo '<a href="/biblio_manga/biblio/public/">Accueil</a>&nbsp;';
             echo '<a href="javascript:history.back()">Retour</a>&nbsp;';
             if(isset($data['nom_manga']) && isset($data['nom_tome'])){
                 echo '<a href="/biblio_manga/biblio/public/manga/tomesuivant/'.$data['nom_manga'].'/'.$data['nom_tome'].'" >Suivant</a>';

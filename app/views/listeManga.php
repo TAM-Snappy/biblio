@@ -1,6 +1,8 @@
 <?php
 
-$contents='<strong>'. $data['nb_manga'] .'</strong> manga disponibles <br><ul class="ul-manga">';
+$contents='<strong>'. $data['nb_manga'] .'</strong> manga disponibles <input type="text" id="search-manga" onkeyup="searchManga(\'ul-manga\', \'card\')" placeholder="Rechercher nom manga"></br></br> <br><div id="ul-manga" class="ul-manga"> ';
+
+$contents.='';
 
 foreach($data['tab_nom_manga'] as $nom_manga){
     //$contents.='<li><a href="/biblio_manga/biblio/public/manga/titre/'.$nom_manga.'" >'.$nom_manga.'</a></li>';
@@ -12,5 +14,5 @@ foreach($data['tab_nom_manga'] as $nom_manga){
                 </div>';
 }
 
-$contents.='</ul>';
+$contents.='</div>';
 require_once('gabarit.php');
