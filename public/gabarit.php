@@ -16,12 +16,31 @@
     <body>
 
         <h1>LA BIBLIO DE RORO</h1>
-        
+
+        <?php 
+
+            echo '<a href="/biblio_manga/biblio/public/">Home</a>&nbsp;';
+            echo '<a href="javascript:history.back()">Retour</a>&nbsp;';
+            if(isset($data['nom_manga']) && isset($data['nom_tome'])){
+                echo '<a href="/biblio_manga/biblio/public/manga/tomesuivant/'.$data['nom_manga'].'/'.$data['nom_tome'].'" >Suivant</a>';
+            }
+
+            echo '</br></br>';
+        ?>
+
         <div id="page">
 
             <?php echo $contents; ?>
             
         </div>
 
+        <script src="/biblio_manga/biblio/public/js/index.js"></script>
+
+        <?php 
+            if(isset($data['nom_manga']) && isset($data['nom_tome'])){
+                echo '<script>redimImage()</script>';
+            }
+        ?>
+        
 	</body>
 </html>
