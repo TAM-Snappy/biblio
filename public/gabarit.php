@@ -7,7 +7,7 @@
         <!-- meta tags shared website -->
         <meta name="author" content="CHEVALIER Thomas">
 
-        <!-- Bootstrap CSS local-->
+        <link rel="stylesheet" href="/biblio_manga/biblio/public/css/style.css">
 
         <link rel="icon" type="image/x-icon" href="favicon.png" />
         <title>Biblio Roro</title>

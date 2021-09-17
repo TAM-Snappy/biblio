@@ -2,4 +2,5 @@ static/manga/*
 !static/manga/asupprimer.txt
 static/temp/*
 !static/temp/asupprimer.txt
+public/images/*
 
