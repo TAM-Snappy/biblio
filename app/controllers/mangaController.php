@@ -97,7 +97,7 @@ class Manga extends Controller
         
             sort($tab_image_tome);
 
-            $this->view('listeImage', ['nom_manga' => $nom_manga, 'nom_tome' => $nom_tome, 'tab_image_tome' => $tab_image_tome]);
+            $this->view('listeImage', ['nom_manga' => $nom_manga, 'nom_tome_sans_extention' => $nom_tome_sans_extention, 'nom_tome' => $nom_tome , 'tab_image_tome' => $tab_image_tome]);
         }
         else{
             echo "Erreur dans l'ouverture du dossier des images !";

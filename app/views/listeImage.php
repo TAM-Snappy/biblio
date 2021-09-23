@@ -1,6 +1,6 @@
 <?php
 
-$contents='<h3>'.$data['nom_manga'].' : '.$data['nom_tome'].'</h3></br>';
+$contents='<b>'.$data['nom_manga'].'</b> : '.$data['nom_tome_sans_extention'].'</br></br>';
 
 foreach($data['tab_image_tome'] as $image){
     $contents.= '<img width="520" class="myImg" src="/biblio_manga/biblio/public/'.$image.'" /></br>';
